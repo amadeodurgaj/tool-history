@@ -1,0 +1,56 @@
+/* Chapter layout. Mobile-first single column; ≥1200 switches to the absolute-positioned desktop comp. */
+.chapter { position: relative; padding-bottom: calc(var(--bar-h) + 48px); }
+.chapter .scrim, .chapter .ghost, .chapter .fig, .chapter .rail { display: none; }
+
+/*noinspection ALL*/
+.chapter .title {
+  margin: 24px var(--margin-mobile) 0; font-size: clamp(34px, calc(var(--tf) * 100vw / 1440), calc(var(--tf) * 1px));
+  line-height: 1.05; letter-spacing: var(--ls-title); white-space: nowrap;
+}
+.chapter .visual { position: relative; margin-top: 40px; height: min(113vw, 700px); pointer-events: none; }
+.chapter .reel { margin: 24px var(--margin-mobile) 0; display: flex; align-items: center; gap: 16px; }
+.chapter .reel i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.chapter .reel .mono { color: var(--accent); }
+.chapter .story { margin: 24px var(--margin-mobile) 0; max-width: var(--text-col); font-weight: 300; font-size: var(--fs-story); line-height: var(--lh-story); color: var(--ink-body); text-wrap: pretty; }
+.chapter .tracks { margin: 48px var(--margin-mobile) 0; max-width: var(--text-col); }
+.chapter .next { margin: 40px var(--margin-mobile) 0; display: inline-flex; align-items: center; gap: 20px; min-height: var(--tap); }
+.chapter .next b { font-size: 15px; letter-spacing: .06em; }
+.chapter .next svg { transition: transform var(--t-ui) var(--ease-slow-out); }
+.chapter .next:hover svg { transform: translateX(6px); }
+
+/* reveal on first entry: chapter top crosses 80% of the viewport (brief §8) */
+.ch { display: inline-block; opacity: 0; transform: translateY(.3em); transition: opacity var(--t-reveal) var(--ease-slow-out), transform var(--t-reveal) var(--ease-slow-out); transition-delay: calc(var(--i) * 40ms); }
+.rv-story { opacity: 0; transform: translateY(24px); transition: opacity var(--t-reveal) var(--ease-slow-out) 200ms, transform var(--t-reveal) var(--ease-slow-out) 200ms; }
+.in .ch, .in .rv-story { opacity: 1; transform: none; }
+
+/* ≥768: 64px margins (bar returns) */
+@media (min-width: 768px) {
+  .chapter .title, .chapter .reel, .chapter .story, .chapter .tracks, .chapter .next { margin-left: var(--margin-desktop); margin-right: var(--margin-desktop); }
+  .chapter .title { margin-top: 56px; }
+}
+
+/* <768: mobile comp */
+@media (max-width: 767px) {
+  .chapter .title { margin-top: 23px; line-height: 1.1; }
+  .chapter .visual { margin-top: 63px; }
+  .chapter .reel { margin-top: 22px; gap: 12px; }
+  .chapter .reel-n { display: none; }
+  .chapter .next { gap: 16px; }
+  .chapter .next b { font-size: 13px; }
+  .chapter .next svg { display: none; }
+}
+
+/* ≥1200: desktop comp, positions straight from the design */
+@media (min-width: 1200px) {
+  .chapter { min-height: 1340px; }
+  .chapter .scrim { display: block; position: absolute; left: 0; top: 0; bottom: 0; width: 620px; background: linear-gradient(to right, rgba(5,5,7,.92) 0%, rgba(5,5,7,.7) 70%, rgba(5,5,7,0) 100%); }
+  .chapter .ghost { display: block; position: absolute; right: 64px; top: 100px; font-size: 120px; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--hair-28); }
+  .chapter .title { position: absolute; left: 64px; top: 112px; margin: 0; }
+  .chapter .reel { position: absolute; left: 68px; top: 232px; margin: 0; }
+  .chapter .story { position: absolute; left: 64px; top: 312px; width: var(--text-col); margin: 0; }
+  .chapter .tracks { position: absolute; left: 64px; top: 500px; width: var(--text-col); margin: 0; }
+  .chapter .next { position: absolute; left: 64px; top: 1128px; margin: 0; }
+  .chapter .visual { position: absolute; top: 300px; right: 0; width: 920px; height: 920px; margin: 0; }
+  .chapter .rail { display: flex; position: absolute; right: 64px; top: 560px; }
+  .chapter .fig { display: block; position: absolute; right: 64px; top: 1196px; text-align: right; }
+}

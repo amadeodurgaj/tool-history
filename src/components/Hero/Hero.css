@@ -1,0 +1,31 @@
+.hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+.hero::before { /* vignette over the canvas vortex */
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 62% at 50% 44%, rgba(5,5,7,0) 40%, rgba(5,5,7,.88) 100%);
+}
+.hero::after { /* melt into the ground before chapter 01 */
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: min(420px, 47%);
+  background: linear-gradient(to top, var(--ground) 0%, rgba(5,5,7,.9) 38%, rgba(5,5,7,0) 100%);
+}
+.hero .letterbox { position: absolute; left: 0; right: 0; top: 0; }
+.hero .rail { position: absolute; z-index: 3; right: var(--margin-desktop); top: 50%; transform: translateY(-50%); }
+.hero-copy { position: absolute; z-index: 3; left: var(--margin-desktop); right: var(--margin-desktop); bottom: 72px; }
+.hero h1 { margin: 0; font-size: clamp(38px, 5.42vw, 78px); line-height: 1.05; letter-spacing: var(--ls-hero); white-space: nowrap; }
+.hero .tagline { margin: 24px 0 0; font-weight: 300; font-size: var(--fs-lead); line-height: var(--lh-lead); color: var(--ink-lead); max-width: 520px; text-wrap: pretty; }
+
+.cue { position: absolute; z-index: 3; right: var(--margin-desktop); bottom: 48px; display: flex; align-items: center; gap: 20px; }
+.cue-line { position: relative; width: 1px; height: 72px; background: rgba(241,238,232,.25); }
+.cue-dot { position: absolute; left: -2px; top: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); animation: cue 3.2s var(--ease-in-out) infinite; }
+@keyframes cue { 0% { transform: translateY(0); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(56px); opacity: 0; } }
+
+@media (max-width: 767px) {
+  .hero .rail { display: none; }
+  .hero-copy { left: var(--margin-mobile); right: var(--margin-mobile); bottom: 96px; }
+  .hero h1 { line-height: 1.12; letter-spacing: var(--ls-title); }
+  .hero .tagline { font-size: 17px; margin-top: 20px; max-width: 260px; }
+  .cue { right: var(--margin-mobile); bottom: 32px; flex-direction: column; gap: 12px; }
+  .cue .mono { writing-mode: vertical-rl; }
+  .cue-line { height: 56px; }
+  .cue-dot { animation-name: cue-m; }
+  @keyframes cue-m { 0% { transform: translateY(0); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(40px); opacity: 0; } }
+}

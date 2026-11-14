@@ -1,0 +1,19 @@
+.tracks { --row: 44px; }
+.tracks header { display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--hair-28); }
+.tracks li { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; height: var(--row); border-bottom: 1px solid var(--hair-10); }
+.tracks .name { font-size: var(--fs-track); line-height: 1; font-weight: 300; color: var(--ink); }
+.tracks .is-on .name { font-weight: 400; }
+.tracks .is-on .name, .tracks .is-on .mono { color: var(--accent); }
+
+/* row reveal: staggered 30ms once the chapter gets `.in` */
+.tracks li { opacity: 0; transform: translateY(12px); transition: opacity var(--t-reveal) var(--ease-slow-out), transform var(--t-reveal) var(--ease-slow-out); transition-delay: calc(300ms + var(--i) * 30ms); }
+.in .tracks li { opacity: 1; transform: none; }
+
+@media (max-width: 767px) {
+  .tracks header { padding-bottom: 12px; }
+  .tracks li { grid-template-columns: 32px 1fr auto; }
+}
+@media (min-width: 1200px) {
+  .tracks { --row: 40px; }
+  .tracks.dense { --row: 36px; } /* Ænima's 15 tracks */
+}

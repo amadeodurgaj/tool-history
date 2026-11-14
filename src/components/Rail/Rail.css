@@ -1,0 +1,7 @@
+.rail { display: flex; flex-direction: column; gap: 20px; align-items: flex-end; }
+.rail li > * { display: flex; align-items: center; gap: 12px; min-height: 16px; }
+.rail a { transition: opacity var(--t-ui); }
+.rail a:hover { opacity: .75; }
+.rail i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); transition: width var(--t-ui), height var(--t-ui); }
+.rail .is-on .mono { color: var(--ink); }
+.rail .is-on i { width: 10px; height: 10px; background: var(--accent); }

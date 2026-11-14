@@ -1,0 +1,66 @@
+/* TOOL: A History — Direction B tokens. Fonts: Syncopate (700), Manrope (300,400), JetBrains Mono (400). */
+:root {
+  /* surfaces */
+  --ground: #050507;
+  --letterbox: #000000;
+  --ink: #f1eee8;
+  --ink-body: #d3d1d9;
+  --ink-lead: #c4c2cb;
+  --muted: #9b9aa3;          /* ~7:1 on --ground */
+  --hair-10: rgba(241, 238, 232, .10);
+  --hair-18: rgba(241, 238, 232, .18);
+  --hair-28: rgba(241, 238, 232, .28);
+  --glass: rgba(10, 10, 14, .62);
+
+  /* accents, one per album; --accent is the live, crossfaded value */
+  --accent-opiate: #E2483D;
+  --accent-undertow: #4FA3B3;
+  --accent-aenima: #D1962F;
+  --accent-aenima-2: #7AA2E3;
+  --accent-lateralus: #E0BC5E;
+  --accent-10000: #9A92F0;
+  --accent-fear: #5FC4A2;
+  --accent: var(--accent-lateralus);
+
+  /* type */
+  --font-display: 'Syncopate', 'Manrope', sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-title: 92px;          /* 80 for "10,000 Days", 70 for "Fear Inoculum" */
+  --fs-hero: 78px;
+  --fs-ghost: 120px;
+  --fs-story: 17px;  --lh-story: 1.7;
+  --fs-lead: 19px;   --lh-lead: 1.5;
+  --fs-track: 15px;
+  --fs-mono: 11px;   --ls-mono: .22em;
+  --ls-title: .03em; --ls-hero: .04em;
+
+  /* spacing */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 16px; --sp-4: 24px; --sp-5: 40px; --sp-6: 64px; --sp-7: 96px; --sp-8: 160px;
+  --margin-desktop: 64px;
+  --margin-mobile: 24px;
+  --text-col: 420px;
+  --letterbox-h: 56px;
+  --bar-h: 96px;
+  --bar-h-mobile: 84px;
+  --tap: 44px;
+
+  /* motion */
+  --ease-slow-out: cubic-bezier(.22, .61, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --t-ui: 240ms;
+  --t-viz-swap: 400ms;
+  --t-stagger: 618ms;
+  --t-accent: 900ms;
+  --t-reveal: 1200ms;
+  --t-idle: 1618ms;
+}
+
+@media (max-width: 767px) {
+  :root { --fs-title: 34px; --fs-hero: 38px; --fs-story: 16px; --bar-h: var(--bar-h-mobile); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
